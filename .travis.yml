@@ -29,7 +29,7 @@ env:
 
 install:
   - pip install anybox.testing.openerp
-  - git clone https://github.com/it-projects-llc/maintainer-quality-tools.git
+  - git clone https://github.com/steingabelgaard/maintainer-quality-tools.git
     ${HOME}/maintainer-quality-tools
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly
@@ -42,7 +42,4 @@ after_success:
 
 notifications:
   email: false
-  webhooks:
-    on_failure: change
-  urls:
-    - "https://ci.it-projects.info/travis/on_failure/change"
+

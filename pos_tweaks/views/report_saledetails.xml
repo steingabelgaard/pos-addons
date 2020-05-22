@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_saledetails" inherit_id="point_of_sale.report_saledetails">
+    	<xpath expr="//th[3]" position="after">
+    		<th>Total</th>
+    	</xpath>
+    	<xpath expr="//tr[@t-foreach='products']/td[3]" position="replace">
+				<td class="text-right">
+					<t t-esc='line["price_unit"]' 
+					   t-options='{"widget": "float", "precision": 2}'/>
+                    <t t-if='line["discount"] != 0'>
+                        Disc: <t t-esc='line["discount"]' />%
+                    </t>
+				</td>
+		</xpath>
+        <xpath expr="//tr[@t-foreach='products']/td[3]" position="after">
+				<td class="text-right">
+					<t t-esc="line['quantity'] * line['price_unit']" 
+					   t-options='{"widget": "float", "precision": 2}'/>
+				</td>
+		</xpath>
+		
+	</template>	
+	
+</odoo>
